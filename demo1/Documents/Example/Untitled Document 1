@@ -1,0 +1,19 @@
+class ClientThread extends Thread{
+	private Socket s;
+	private Scanner sc;
+	public ClientThread(Socket s) throws Exception{
+		this.s = s;
+		this.sc = new Scanner(s.getInputStream());
+	}
+	public void run(){
+		try{
+			String response = sc.nextLine();
+			System.out.println(response);
+			sc.close();
+		}
+		catch(Exception e){
+			System.out.println(e);
+		}
+	}
+}
+
